@@ -16,7 +16,7 @@ import {
     VStack,
     InputRightAddon,
 } from "@chakra-ui/react"
-import { InputField, Button } from ".";
+import { InputField, Button, GoogleMap, Flex } from ".";
 import { Card } from '@components/design/Card'
 import { searchSchoolDistricts, searchSchools, NCESDistrictFeatureAttributes, NCESSchoolFeatureAttributes } from "@utils/nces"
 
@@ -51,42 +51,36 @@ const Home: React.FC = () => {
     // }, [])
 
     return (
-        <Center padding="100px" height="90vh">
-            <ScaleFade initialScale={0.9} in={true}>
-                <Card variant="rounded" borderColor="blue">
-                    <Heading>School Data Finder</Heading>
-                    <Text>
-                        How would you utilize React.useEffect with the searchSchoolDistricts and searchSchools functions? <br />
-                        Using <a href="https://chakra-ui.com/docs/principles" target="_blank">Chakra-UI</a> or your favorite UI toolkit, build an interface that allows the user to: <br />
-                        {/* <OrderedList>
-                            <ListItem>Search for a district</ListItem>
-                            <ListItem>Search for a school within the district (or bypass district filter)</ListItem>
-                            <ListItem>View all returned data in an organized way</ListItem>
-                        </OrderedList> */}
-                    </Text>
-                    <Divider margin={4} />
-                    <Text>
-                        {/* Check the console for example of returned data. <b>Happy coding!</b>< br /> */}
-                        {searching ? <Spinner /> : <></>}< br />
-                        {districtSearch.length} Demo Districts<br />
-                        {schoolSearch.length} Demo Schools<br />
-                    </Text>
-                    <InputField
-                        placeholder="Peninsula School District"
-                        label="Search District"
-                        value={districtInput}
-                        onChange={onUpdateDistrict}
-                    />
-                    <InputField
-                        placeholder="Kopachuck Middle School"
-                        label="Search School"
-                        value={schoolInput}
-                        onChange={onUpdateSchool}
-                    />
-                    <Button onClick={handleSearch}>Submit</Button>
-                </Card>
-            </ScaleFade>
-        </Center>
+        <Flex column style={{ width: '100%', height: '100vh', flex: 1 }}>
+            <Card variant="rounded" borderColor="blue">
+                <Heading>School Data Finder</Heading>
+                <Text>
+                    How would you utilize React.useEffect with the searchSchoolDistricts and searchSchools functions? <br />
+                    Using <a href="https://chakra-ui.com/docs/principles" target="_blank">Chakra-UI</a> or your favorite UI toolkit, build an interface that allows the user to: <br />
+                </Text>
+                <Divider margin={4} />
+                <Text>
+                    {/* Check the console for example of returned data. <b>Happy coding!</b>< br /> */}
+                    {searching ? <Spinner /> : <></>}< br />
+                    {districtSearch.length} Demo Districts<br />
+                    {schoolSearch.length} Demo Schools<br />
+                </Text>
+                <InputField
+                    placeholder="Peninsula School District"
+                    label="Search District"
+                    value={districtInput}
+                    onChange={onUpdateDistrict}
+                />
+                <InputField
+                    placeholder="Kopachuck Middle School"
+                    label="Search School"
+                    value={schoolInput}
+                    onChange={onUpdateSchool}
+                />
+                <Button onClick={handleSearch}>Submit</Button>
+            </Card>
+            <GoogleMap zoom={5} center={{ lat: 47.185379, lng: -122.292900 }} locations={schoolSearch} />
+        </Flex>
     );
 };
 
