@@ -1,6 +1,6 @@
-import React, { useEffect } from "react"
+import React, { useCallback, useEffect, useState } from "react"
 import {
-    Button,
+    // Button,
     Center,
     Heading,
     Text,
@@ -16,31 +16,40 @@ import {
     VStack,
     InputRightAddon,
 } from "@chakra-ui/react"
+import { InputField, Button } from ".";
 import { Card } from '@components/design/Card'
 import { searchSchoolDistricts, searchSchools, NCESDistrictFeatureAttributes, NCESSchoolFeatureAttributes } from "@utils/nces"
 
 
 const Home: React.FC = () => {
     const [searching, setSearching] = React.useState(false)
+    const [districtInput, setDistrictInput] = useState('')
+    const [schoolInput, setSchoolInput] = useState('')
     const [districtSearch, setDistrictSearch] = React.useState<NCESDistrictFeatureAttributes[]>([]);
     const [schoolSearch, setSchoolSearch] = React.useState<NCESSchoolFeatureAttributes[]>([]);
-    
-    const demo = async () => { // see console for api result examples
+
+    const handleSearch = useCallback(async () => {
         setSearching(true)
-        const demoDistrictSearch = await searchSchoolDistricts("Peninsula School District")
+
+        const demoDistrictSearch = districtInput ? await searchSchoolDistricts(districtInput) : []
         setDistrictSearch(demoDistrictSearch)
         console.log("District example", demoDistrictSearch)
 
-        const demoSchoolSearch = await searchSchools("k", demoDistrictSearch[1].LEAID)
+        const demoSchoolSearch = schoolInput ? await searchSchools(schoolInput, demoDistrictSearch.length ? demoDistrictSearch[1].LEAID : undefined) : []
         setSchoolSearch(demoSchoolSearch)
         console.log("School Example", demoSchoolSearch)
         setSearching(false)
-    }
+    }, [schoolSearch, districtSearch, schoolInput, districtInput])
 
-    useEffect(() => {
-        demo()
-    }, [])
-    
+    const onUpdateSchool = (value: any) => setSchoolInput(value);
+    const onUpdateDistrict = (value: any) => setDistrictInput(value);
+
+
+    // Using a button to trigger the search so this is not needed.
+    // useEffect(() => {
+    //     demo()
+    // }, [])
+
     return (
         <Center padding="100px" height="90vh">
             <ScaleFade initialScale={0.9} in={true}>
@@ -49,19 +58,32 @@ const Home: React.FC = () => {
                     <Text>
                         How would you utilize React.useEffect with the searchSchoolDistricts and searchSchools functions? <br />
                         Using <a href="https://chakra-ui.com/docs/principles" target="_blank">Chakra-UI</a> or your favorite UI toolkit, build an interface that allows the user to: <br />
-                        <OrderedList>
+                        {/* <OrderedList>
                             <ListItem>Search for a district</ListItem>
                             <ListItem>Search for a school within the district (or bypass district filter)</ListItem>
                             <ListItem>View all returned data in an organized way</ListItem>
-                        </OrderedList>
+                        </OrderedList> */}
                     </Text>
                     <Divider margin={4} />
                     <Text>
-                        Check the console for example of returned data. <b>Happy coding!</b>< br />
+                        {/* Check the console for example of returned data. <b>Happy coding!</b>< br /> */}
                         {searching ? <Spinner /> : <></>}< br />
                         {districtSearch.length} Demo Districts<br />
                         {schoolSearch.length} Demo Schools<br />
                     </Text>
+                    <InputField
+                        placeholder="Peninsula School District"
+                        label="Search District"
+                        value={districtInput}
+                        onChange={onUpdateDistrict}
+                    />
+                    <InputField
+                        placeholder="Kopachuck Middle School"
+                        label="Search School"
+                        value={schoolInput}
+                        onChange={onUpdateSchool}
+                    />
+                    <Button onClick={handleSearch}>Submit</Button>
                 </Card>
             </ScaleFade>
         </Center>
