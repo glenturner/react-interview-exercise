@@ -1,0 +1,19 @@
+
+.list_item_wrapper {
+    box-shadow: inset 0px 1px 0px 0px rgb(255 255 255 / 10%), 0px 24px 41px 0px rgb(0 0 0 / 50%);
+    background: #484C7A;
+    color: #fff;
+    border-radius: 5px;
+    width: 500px;
+    margin: 10px;
+    padding: 10px 0;
+    // transition: transform 0.2s ease-in-out;
+}
+
+.school_name {
+    font-weight: 600;
+}
+
+.location {
+    font-size: 14px;
+}

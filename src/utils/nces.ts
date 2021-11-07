@@ -58,29 +58,29 @@ interface NCESDistrictFeature {
     }
 }
 
-const searchSchoolDistricts = async (name:string):Promise<NCESDistrictFeatureAttributes[]> => {
+const searchSchoolDistricts = async (name: string): Promise<NCESDistrictFeatureAttributes[]> => {
     let publicSchoolEndpoint = `https://nces.ed.gov/opengis/rest/services/K12_School_Locations/EDGE_GEOCODE_PUBLICLEA_1516/MapServer/0/query?where=UPPER(NAME) LIKE UPPER('%${name}%')&outFields=*&outSR=4326&f=json`;
     let combinedData = [];
     let publicResponse = await (await fetch(publicSchoolEndpoint)).json();
-    
+
     combinedData = [
-        ...publicResponse.features ? publicResponse.features.map((feature:NCESDistrictFeature) => {return feature.attributes }) : [],
+        ...publicResponse.features ? publicResponse.features.map((feature: NCESDistrictFeature) => { return feature.attributes }) : [],
     ]
     return combinedData;
 }
 
-const searchSchools = async (name:string, district?:string):Promise<NCESSchoolFeatureAttributes[]> => {
+const searchSchools = async (name: string, district?: string): Promise<NCESSchoolFeatureAttributes[]> => {
     let privateSchoolEndpoint = `https://services1.arcgis.com/Ua5sjt3LWTPigjyD/arcgis/rest/services/Private_School_Locations_Current/FeatureServer/0/query?where=UPPER(NAME) LIKE UPPER('%${name}%')${district ? `%20AND%20LEAID%20%3D%20'${district}'` : ""}&outFields=*&outSR=4326&f=json`;
     let publicSchoolEndpoint = `https://services1.arcgis.com/Ua5sjt3LWTPigjyD/arcgis/rest/services/Public_School_Location_201819/FeatureServer/0/query?where=UPPER(NAME) LIKE UPPER('%${name}%')${district ? `%20AND%20LEAID%20%3D%20'${district}'` : ""}&outFields=*&outSR=4326&f=json`;
     let combinedData = [];
     let privateResponse = await (await fetch(privateSchoolEndpoint)).json();
     let publicResponse = await (await fetch(publicSchoolEndpoint)).json();
-    
+
     combinedData = [
-        ...privateResponse.features ? privateResponse.features.map((feature:NCESSchoolFeature) => {return feature.attributes }) : [],
-        ...publicResponse.features ? publicResponse.features.map((feature:NCESSchoolFeature) => {return feature.attributes }) : [],
+        ...privateResponse.features ? privateResponse.features.map((feature: NCESSchoolFeature) => { return { ...feature.attributes, private: true } }) : [],
+        ...publicResponse.features ? publicResponse.features.map((feature: NCESSchoolFeature) => { return { ...feature.attributes, private: false } }) : [],
     ]
     return combinedData;
 }
 
-export {searchSchoolDistricts, searchSchools}
+export { searchSchoolDistricts, searchSchools }

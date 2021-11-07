@@ -1,12 +1,13 @@
-import Header from '@components/Header'
 import Home from '@components/Home'
+import { Navbar } from '@components/Navbar'
+import { Flex } from '@components/Flex'
 
 function App() {
   return (
-    <div className="App">
-      <Header />
+    <Flex center column style={{ overflow: 'hidden' }}>
+      <Navbar />
       <Home />
-    </div>
+    </Flex>
   )
 }
 

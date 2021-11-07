@@ -1,0 +1,13 @@
+@import '../design/Glob.scss';
+
+.landing_wrapper {
+    width: 100%;
+    height: 60vh;
+    position: relative;
+    overflow: hidden;
+    margin-top: 50px;
+}
+
+.copy_section {
+    flex: 1;
+}
