@@ -12,7 +12,6 @@ export const LandingSection = () => {
             <Flex center className={style.image_section} style={{ flex: 1 }}>
                 <img
                     draggable="false"
-                    // style={{ width: '30rem', height: '30rem' }}
                     alt='empty'
                     src={SearchPoints}
                 />

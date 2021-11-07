@@ -11,14 +11,16 @@ interface SchoolListProps {
     value?: string;
     onChange?: any;
     onClick?: any;
-    numberSchools?: number;
+    isLoading?: boolean;
 }
 
 export const SchoolList = (props: SchoolListProps) => {
-    const { data, value, onChange = () => { }, onClick = () => { }, numberSchools } = props;
+    const { data, value, onChange = () => { }, onClick = () => { }, isLoading = false } = props;
     return (
         <Flex center wrap className={style.school_list_wrapper}>
-            {/* <h2 className={style.search_header}>School Finder</h2> */}
+            <Flex center style={{ width: '100%' }}>
+                {data?.length && <h3 className={style.num_schools}>{data.length} {data.length === 1 ? 'school' : 'schools'}  found</h3>}
+            </Flex>
             <Flex center className={style.search_wrapper}>
                 <SearchField
                     placeholder="Search a city or county"

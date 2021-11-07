@@ -22,7 +22,6 @@ import {
     Button,
     GoogleMap,
     Flex,
-    SchoolFinder,
     SchoolList,
 } from ".";
 import { Card } from '@components/design/Card'
@@ -62,35 +61,13 @@ const Home: React.FC = () => {
     return (
         <Flex column style={{ width: '100%' }}>
             <LandingSection />
-            <SchoolFinder>
-                <Heading>School Data Finder</Heading>
-                <Text>
-                    {searching ? <Spinner /> : <></>}< br />
-                    {districtSearch.length} Demo Districts<br />
-                    {schoolSearch.length} Demo Schools<br />
-                </Text>
-                <SearchField
-                    placeholder="Peninsula School District"
-                    label="Search District"
-                    value={districtInput}
-                    onChange={onUpdateDistrict}
-                />
-                <SearchField
-                    placeholder="Kopachuck Middle School"
-                    // label="Search School"
-                    value={schoolInput}
-                    onChange={onUpdateSchool}
-                />
-                <Button onClick={handleSearch}>Submit</Button>
-
-            </SchoolFinder>
-            {/* <Flex style={{ width: '100%' }}>
+            <Flex style={{ width: '100%' }}>
                 <SchoolList
                     onClick={handleSearch}
                     value={schoolInput}
                     onChange={onUpdateSchool}
                     data={schoolSearch} />
-            </Flex> */}
+            </Flex>
             <GoogleMap zoom={4} center={{ lat: 39.06718, lng: -94.588878 }} locations={schoolSearch} />
         </Flex>
     );
