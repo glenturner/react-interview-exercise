@@ -6,7 +6,7 @@ import { AppLogo } from "..";
 // import { useHistory } from "react-router-dom";
 // import { Hamburger } from "../Hamburger";
 
-export const Header = (props: any) => {
+export const Navbar = (props: any) => {
     // const history = useHistory();
     // const dispatch = useDispatch();
     const [selectedRoute, setSelectedRoute] = useState<any>(null);

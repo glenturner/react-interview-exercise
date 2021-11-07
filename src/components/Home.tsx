@@ -18,11 +18,12 @@ import {
 } from "@chakra-ui/react"
 import {
     LandingSection,
-    InputField,
+    SearchField,
     Button,
     GoogleMap,
     Flex,
     SchoolFinder,
+    SchoolList,
 } from ".";
 import { Card } from '@components/design/Card'
 import { searchSchoolDistricts, searchSchools, NCESDistrictFeatureAttributes, NCESSchoolFeatureAttributes } from "@utils/nces"
@@ -68,22 +69,25 @@ const Home: React.FC = () => {
                     {districtSearch.length} Demo Districts<br />
                     {schoolSearch.length} Demo Schools<br />
                 </Text>
-                <InputField
+                {/* <InputField
                     placeholder="Peninsula School District"
                     label="Search District"
                     value={districtInput}
                     onChange={onUpdateDistrict}
-                />
-                <InputField
+                /> */}
+                <SearchField
                     placeholder="Kopachuck Middle School"
-                    label="Search School"
+                    // label="Search School"
                     value={schoolInput}
                     onChange={onUpdateSchool}
                 />
                 <Button onClick={handleSearch}>Submit</Button>
 
             </SchoolFinder>
-            <GoogleMap zoom={15} center={{ lat: schoolSearch[0]?.LAT ? schoolSearch[0]?.LAT : 47.185379, lng: schoolSearch[0]?.LON ? schoolSearch[0]?.LON : -122.292900 }} locations={schoolSearch} />
+            <Flex style={{ width: '100%' }}>
+                <SchoolList data={schoolSearch} />
+                {/* <GoogleMap zoom={4} center={{ lat: 39.06718, lng: -94.588878 }} locations={schoolSearch} /> */}
+            </Flex>
         </Flex>
     );
 };
