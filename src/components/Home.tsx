@@ -75,17 +75,21 @@ const Home: React.FC = () => {
                     value={districtInput}
                     onChange={onUpdateDistrict}
                 /> */}
-                <SearchField
+                {/* <SearchField
                     placeholder="Kopachuck Middle School"
                     // label="Search School"
                     value={schoolInput}
                     onChange={onUpdateSchool}
                 />
-                <Button onClick={handleSearch}>Submit</Button>
+                <Button onClick={handleSearch}>Submit</Button> */}
 
             </SchoolFinder>
             <Flex style={{ width: '100%' }}>
-                <SchoolList data={schoolSearch} />
+                <SchoolList
+                    onClick={handleSearch}
+                    value={schoolInput}
+                    onChange={onUpdateSchool}
+                    data={schoolSearch} />
                 {/* <GoogleMap zoom={4} center={{ lat: 39.06718, lng: -94.588878 }} locations={schoolSearch} /> */}
             </Flex>
         </Flex>

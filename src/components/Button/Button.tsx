@@ -1,4 +1,7 @@
+import { styled } from '@chakra-ui/system';
 import React from 'react';
+import { Flex } from '..';
+import style from './style.module.scss';
 
 interface ButtonProps {
     onClick?: any;
@@ -13,6 +16,8 @@ export const Button = (props: ButtonProps) => {
     }
 
     return (
-        <button onClick={handleClick}>{props.children}</button>
+        <Flex center className={style.search_button_wrapper}>
+            <button onClick={handleClick}>{props.children}</button>
+        </Flex>
     );
 };

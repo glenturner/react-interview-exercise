@@ -7,7 +7,7 @@ export const LandingSection = () => {
     return (
         <Flex justify="space-evenly" className={style.landing_wrapper}>
             <Flex center className={style.copy_section}>
-                <h1>Create a school that <br /> <b>transforms people.</b></h1>
+                <h1>Find a school that <br /> <b>transforms people.</b></h1>
             </Flex>
             <Flex center className={style.image_section} style={{ flex: 1 }}>
                 <img
