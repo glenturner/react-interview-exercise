@@ -24,6 +24,7 @@ export const SchoolList = (props: SchoolListProps) => {
                     placeholder="Search a city or county"
                     value={value}
                     onChange={onChange} />
+
                 <Button onClick={onClick}>
                     <img
                         draggable="false"
