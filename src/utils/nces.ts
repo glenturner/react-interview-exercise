@@ -77,8 +77,8 @@ const searchSchools = async (name: string, district?: string): Promise<NCESSchoo
     let publicResponse = await (await fetch(publicSchoolEndpoint)).json();
 
     combinedData = [
-        ...privateResponse.features ? privateResponse.features.map((feature: NCESSchoolFeature) => { return feature.attributes }) : [],
-        ...publicResponse.features ? publicResponse.features.map((feature: NCESSchoolFeature) => { return feature.attributes }) : [],
+        ...privateResponse.features ? privateResponse.features.map((feature: NCESSchoolFeature) => { return { ...feature.attributes, private: true } }) : [],
+        ...publicResponse.features ? publicResponse.features.map((feature: NCESSchoolFeature) => { return { ...feature.attributes, private: false } }) : [],
     ]
     return combinedData;
 }

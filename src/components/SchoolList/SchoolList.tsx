@@ -11,14 +11,15 @@ interface SchoolListProps {
     value?: string;
     onChange?: any;
     onClick?: any;
+    numberSchools?: number;
 }
 
 export const SchoolList = (props: SchoolListProps) => {
-    const { data, value, onChange = () => { }, onClick = () => { } } = props;
+    const { data, value, onChange = () => { }, onClick = () => { }, numberSchools } = props;
     return (
         <Flex center wrap className={style.school_list_wrapper}>
+            {/* <h2 className={style.search_header}>School Finder</h2> */}
             <Flex center className={style.search_wrapper}>
-                {/* <h2 className={style.search_header}>School Finder</h2> */}
                 <SearchField
                     placeholder="Search a city or county"
                     value={value}

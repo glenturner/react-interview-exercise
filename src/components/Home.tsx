@@ -54,7 +54,7 @@ const Home: React.FC = () => {
     const onUpdateDistrict = (value: any) => setDistrictInput(value);
 
 
-    // Using a button to trigger the search so this is not needed.
+    // Using a button to trigger the search so this is not needed. The search button element is located in the School List element. I passed a prop to the component to handle the trigger for the search comment -- added by Glen Turner.
     // useEffect(() => {
     //     demo()
     // }, [])
@@ -90,8 +90,8 @@ const Home: React.FC = () => {
                     value={schoolInput}
                     onChange={onUpdateSchool}
                     data={schoolSearch} />
-                {/* <GoogleMap zoom={4} center={{ lat: 39.06718, lng: -94.588878 }} locations={schoolSearch} /> */}
             </Flex>
+            <GoogleMap zoom={4} center={{ lat: 39.06718, lng: -94.588878 }} locations={schoolSearch} />
         </Flex>
     );
 };
