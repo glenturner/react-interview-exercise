@@ -16,7 +16,14 @@ import {
     VStack,
     InputRightAddon,
 } from "@chakra-ui/react"
-import { InputField, Button, GoogleMap, Flex } from ".";
+import {
+    LandingSection,
+    InputField,
+    Button,
+    GoogleMap,
+    Flex,
+    SchoolFinder,
+} from ".";
 import { Card } from '@components/design/Card'
 import { searchSchoolDistricts, searchSchools, NCESDistrictFeatureAttributes, NCESSchoolFeatureAttributes } from "@utils/nces"
 
@@ -38,6 +45,7 @@ const Home: React.FC = () => {
         const demoSchoolSearch = schoolInput ? await searchSchools(schoolInput, demoDistrictSearch.length ? demoDistrictSearch[1].LEAID : undefined) : []
         setSchoolSearch(demoSchoolSearch)
         console.log("School Example", demoSchoolSearch)
+        // console.log("School Example", demoSchoolSearch.map((c) => c.NMCNTY))
         setSearching(false)
     }, [schoolSearch, districtSearch, schoolInput, districtInput])
 
@@ -51,16 +59,11 @@ const Home: React.FC = () => {
     // }, [])
 
     return (
-        <Flex column style={{ width: '100%', height: '100vh', flex: 1 }}>
-            <Card variant="rounded" borderColor="blue">
+        <Flex column style={{ width: '100%' }}>
+            <LandingSection />
+            <SchoolFinder>
                 <Heading>School Data Finder</Heading>
                 <Text>
-                    How would you utilize React.useEffect with the searchSchoolDistricts and searchSchools functions? <br />
-                    Using <a href="https://chakra-ui.com/docs/principles" target="_blank">Chakra-UI</a> or your favorite UI toolkit, build an interface that allows the user to: <br />
-                </Text>
-                <Divider margin={4} />
-                <Text>
-                    {/* Check the console for example of returned data. <b>Happy coding!</b>< br /> */}
                     {searching ? <Spinner /> : <></>}< br />
                     {districtSearch.length} Demo Districts<br />
                     {schoolSearch.length} Demo Schools<br />
@@ -78,8 +81,9 @@ const Home: React.FC = () => {
                     onChange={onUpdateSchool}
                 />
                 <Button onClick={handleSearch}>Submit</Button>
-            </Card>
-            <GoogleMap zoom={5} center={{ lat: 47.185379, lng: -122.292900 }} locations={schoolSearch} />
+
+            </SchoolFinder>
+            <GoogleMap zoom={15} center={{ lat: schoolSearch[0]?.LAT ? schoolSearch[0]?.LAT : 47.185379, lng: schoolSearch[0]?.LON ? schoolSearch[0]?.LON : -122.292900 }} locations={schoolSearch} />
         </Flex>
     );
 };

@@ -16,9 +16,7 @@ export const GoogleMap = (props: GoogleMapProps) => {
     // console.log(`LOCATION =================> `, props.locations);
 
     return (
-        <Flex
-            className={style.wrapper}
-            style={{ flex: 1, width: '100%', height: '100%' }}>
+        <Flex className={style.map_wrapper}>
             <GoogleMapReact
                 bootstrapURLKeys={{ key: googleMapsKey }}
                 defaultCenter={props.center}
