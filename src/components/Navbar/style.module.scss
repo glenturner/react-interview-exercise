@@ -11,22 +11,11 @@
     padding: 5px 15px;
     padding-left: 100px;
     user-select: none;
-
-    h1 {
-        font-size: 25px;
-    }
 }
 
-.navSection {
-    display: flex;
-}
-
-@media screen and (max-width: 1200px) {
-    .wrapper {
+@media screen and (max-width: 1000px) {
+    .header_wrapper {
         padding-left: 40px !important;
         padding-bottom: 5px !important;
-    }
-    .navSection {
-        display: none !important;
     }
 }

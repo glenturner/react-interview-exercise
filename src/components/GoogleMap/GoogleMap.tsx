@@ -13,8 +13,6 @@ interface GoogleMapProps {
 
 export const GoogleMap = (props: GoogleMapProps) => {
 
-    // console.log(`LOCATION =================> `, props.locations);
-
     return (
         <Flex className={style.map_wrapper}>
             <GoogleMapReact

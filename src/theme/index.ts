@@ -1,5 +1,5 @@
 import { extendTheme } from "@chakra-ui/react";
-import {CardTheme} from "@components/design/Card";
+import { CardTheme } from "@components/design/Card";
 import * as overrides from "@theme/override";
 
 const colors = {
@@ -12,14 +12,15 @@ const colors = {
     darkBlue: "#1467FF",
     blue: "#2AB8FF",
     purple: "#630CB2",
-    yellow: "#fff95e"
+    yellow: "#fff95e",
+    teal: "#43D4FF",
   },
-  blue: {500: "#2ab8ff", 600: "#1467FF"},
-  yellow: {100: "#fff95e"},
-  red: {100: "#ff4658"},
-  pink: {100: "#e748b9" }
+  blue: { 500: "#2ab8ff", 600: "#1467FF" },
+  yellow: { 100: "#fff95e" },
+  red: { 100: "#ff4658" },
+  pink: { 100: "#e748b9" }
 }
-export const theme = extendTheme({ 
+export const theme = extendTheme({
   colors,
   components: {
     Card: CardTheme,

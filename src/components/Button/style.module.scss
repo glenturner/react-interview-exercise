@@ -14,3 +14,9 @@
 .search_button_wrapper:hover {
     opacity: 0.7;
 }
+
+@media screen and (max-width: 400px) {
+    .search_button_wrapper {
+        display: none !important;
+    }
+}

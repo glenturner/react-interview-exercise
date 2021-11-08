@@ -2,7 +2,9 @@ import React from 'react';
 import { Flex } from '..';
 import { ListItem } from './ListItem';
 import { SearchField } from '..';
-import { SearchIcon, SubmitIcon } from 'src/Assets';
+import { SubmitIcon } from 'src/Assets';
+import { TabNavigationPanel } from './TabNavigationPanel';
+import { ScaleFade } from '@chakra-ui/transition';
 import { Button } from '..';
 import style from './style.module.scss';
 
@@ -12,22 +14,54 @@ interface SchoolSearchProps {
     onChange?: any;
     onClick?: any;
     isLoading?: boolean;
+    locations?: any;
+    id?: string;
 }
 
 export const SchoolSearch = (props: SchoolSearchProps) => {
-    const { data, value, onChange = () => { }, onClick = () => { }, isLoading = false } = props;
+    const {
+        data,
+        value,
+        onChange = () => { },
+        onClick = () => { },
+        isLoading,
+        locations,
+        id,
+    } = props;
+
     return (
         <Flex center wrap className={style.school_list_wrapper}>
-            <Flex center style={{ width: '100%' }}>
-                {data?.length && <h3 className={style.num_schools}>{data.length} {data.length === 1 ? 'school' : 'schools'}  found</h3>}
+            <Flex center className={style.school_count}>
+                <ScaleFade initialScale={0.9} in={!isLoading}>
+                    {
+                        data?.length && data?.length !== 1 &&
+                        <h3 className={style.num_schools}>
+                            {`${data.length} schools found`}
+                        </h3>
+
+                    }
+                    {
+                        data?.length === 0 &&
+                        <h3 className={style.search_error}>
+                            {`${data.length} schools found`}
+                        </h3>
+                    }
+                    {
+                        data?.length === 1 &&
+                        <h3 className={style.num_schools}>
+                            {`${data.length} school found`}
+                        </h3>
+                    }
+                </ScaleFade>
             </Flex>
             <Flex center className={style.search_wrapper}>
                 <SearchField
-                    placeholder="Search a city or county"
+                    placeholder="Search a school or city"
                     value={value}
                     onChange={onChange} />
-
-                <Button onClick={onClick}>
+                <Button id={id}
+                    isLoading={isLoading}
+                    onClick={onClick}>
                     <img
                         draggable="false"
                         style={{ height: 30, width: 'auto' }}
@@ -35,7 +69,9 @@ export const SchoolSearch = (props: SchoolSearchProps) => {
                         src={SubmitIcon} />
                 </Button>
             </Flex>
-            {data?.map((d: any) => { return <ListItem data={d} /> })}
-        </Flex>
+            <TabNavigationPanel
+                children={data?.map((d: any) => { return <ListItem data={d} /> })}
+                locations={locations} />
+        </Flex >
     );
 };
