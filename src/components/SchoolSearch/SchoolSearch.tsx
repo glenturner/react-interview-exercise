@@ -6,7 +6,7 @@ import { SearchIcon, SubmitIcon } from 'src/Assets';
 import { Button } from '..';
 import style from './style.module.scss';
 
-interface SchoolListProps {
+interface SchoolSearchProps {
     data?: any;
     value?: string;
     onChange?: any;
@@ -14,7 +14,7 @@ interface SchoolListProps {
     isLoading?: boolean;
 }
 
-export const SchoolList = (props: SchoolListProps) => {
+export const SchoolSearch = (props: SchoolSearchProps) => {
     const { data, value, onChange = () => { }, onClick = () => { }, isLoading = false } = props;
     return (
         <Flex center wrap className={style.school_list_wrapper}>
