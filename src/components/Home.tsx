@@ -22,7 +22,7 @@ import {
     Button,
     GoogleMap,
     Flex,
-    SchoolList,
+    SchoolSearch,
 } from ".";
 import { Card } from '@components/design/Card'
 import { searchSchoolDistricts, searchSchools, NCESDistrictFeatureAttributes, NCESSchoolFeatureAttributes } from "@utils/nces"
@@ -53,7 +53,7 @@ const Home: React.FC = () => {
     const onUpdateDistrict = (value: any) => setDistrictInput(value);
 
 
-    // Using a button to trigger the search so this is not needed. The search button element is located in the School List element. I passed a prop to the component to handle the trigger for the search comment -- added by Glen Turner.
+    // Using a button to trigger the search so this is not needed. The search button element is located in the School List element. I passed a prop to the component to handle the trigger for the search --- comment -- added by Glen Turner.
     // useEffect(() => {
     //     demo()
     // }, [])
@@ -62,7 +62,7 @@ const Home: React.FC = () => {
         <Flex column style={{ width: '100%' }}>
             <LandingSection />
             <Flex style={{ width: '100%' }}>
-                <SchoolList
+                <SchoolSearch
                     onClick={handleSearch}
                     value={schoolInput}
                     onChange={onUpdateSchool}
