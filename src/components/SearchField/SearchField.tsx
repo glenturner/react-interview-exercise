@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent } from "react";
 import { Flex } from "..";
 import { SearchIcon } from "src/Assets";
 import style from "./style.module.scss";
