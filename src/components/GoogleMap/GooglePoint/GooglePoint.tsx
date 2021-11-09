@@ -12,6 +12,6 @@ interface GooglePointProps {
 
 export const GooglePoint = (props: GooglePointProps) => {
     return (
-        <img src={Waypoint} className={style.waypoint} style={{ height: '2rem', width: '2rem' }} />
+        <img src={Waypoint} className={style.waypoint} style={{ height: '4rem', width: '4rem' }} />
     );
 };
