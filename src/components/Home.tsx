@@ -25,8 +25,6 @@ const Home: React.FC = () => {
 
     const onUpdateSchool = useCallback((value: any) => setSchoolInput(value), []);
 
-    // Decided to omit district search in order to improve UX -- added by Glen Turner.
-    // const onUpdateDistrict = (value: any) => setDistrictInput(value);
 
     useEffect(() => {
         const listener = (event: any) => {
