@@ -29,7 +29,7 @@ export const SchoolSearch = (props: SchoolSearchProps) => {
         id,
     } = props;
 
-    const SchoolsCounter = useCallback(() => {
+    const SchoolsCounter = useCallback((props: any) => {
         if (!data?.length) {
             return <h3 className={style.search_error}>
                 {`${data.length} schools found`}
@@ -43,7 +43,6 @@ export const SchoolSearch = (props: SchoolSearchProps) => {
         return <h3 className={style.num_schools}>
             {`${data.length} school found`}
         </h3>
-
     }, [data])
 
     return (

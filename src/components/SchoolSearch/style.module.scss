@@ -1,7 +1,6 @@
 
 .school_list_wrapper {
     width: 100%;
-    padding: 20px;
     background-color: #23273B;
 }
 
@@ -26,12 +25,6 @@
         font-weight: 600;
         letter-spacing: 0.04051em;
         padding: 25px 0;
-    }
-}
-
-@media only screen and (max-width: 1000px) {
-    .school_list_wrapper {
-        padding: 0 !important;
     }
 }
 

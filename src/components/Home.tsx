@@ -48,7 +48,6 @@ const Home: React.FC = () => {
             <LandingSection />
             <Flex style={{ width: '100%' }}>
                 <SchoolSearch
-                    id="search_button"
                     isLoading={searching}
                     onClick={handleSearch}
                     value={schoolInput}
