@@ -13,9 +13,13 @@ export const LandingSection = () => {
 
     return (
         <Flex justify="space-evenly" className={style.landing_wrapper}>
-            <Flex id="landing_copy" column center className={style.copy_section}>
+            <Flex
+                id="landing_copy"
+                className={style.copy_section}
+                center
+                column>
                 <h1>Find a school that <br /> <b>transforms people.</b></h1>
-                <div className={style.accent}></div>
+                <div className={style.accent} />
                 <span className={style.grabber}>
                     CharacterStrong aims to provide resources for professional learning services that positively impact lives.
                 </span>

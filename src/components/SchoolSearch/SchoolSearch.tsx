@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Flex } from '..';
 import { ListItem } from './ListItem';
 import { SearchField } from '..';
@@ -29,29 +29,31 @@ export const SchoolSearch = (props: SchoolSearchProps) => {
         id,
     } = props;
 
+    const SchoolsCounter = useCallback(() => {
+        if (!data?.length) {
+            return <h3 className={style.search_error}>
+                {`${data.length} schools found`}
+            </h3>
+        }
+        if (data?.length !== 1) {
+            return <h3 className={style.num_schools}>
+                {`${data.length} schools found`}
+            </h3>
+        }
+        return <h3 className={style.num_schools}>
+            {`${data.length} school found`}
+        </h3>
+
+    }, [data])
+
     return (
-        <Flex center wrap className={style.school_list_wrapper}>
+        <Flex
+            center
+            wrap
+            className={style.school_list_wrapper}>
             <Flex center className={style.school_count}>
                 <ScaleFade initialScale={0.9} in={!isLoading}>
-                    {
-                        data?.length && data?.length !== 1 &&
-                        <h3 className={style.num_schools}>
-                            {`${data.length} schools found`}
-                        </h3>
-
-                    }
-                    {
-                        data?.length === 0 &&
-                        <h3 className={style.search_error}>
-                            {`${data.length} schools found`}
-                        </h3>
-                    }
-                    {
-                        data?.length === 1 &&
-                        <h3 className={style.num_schools}>
-                            {`${data.length} school found`}
-                        </h3>
-                    }
+                    <SchoolsCounter />
                 </ScaleFade>
             </Flex>
             <Flex center className={style.search_wrapper}>
@@ -59,7 +61,8 @@ export const SchoolSearch = (props: SchoolSearchProps) => {
                     placeholder="Search a school or city"
                     value={value}
                     onChange={onChange} />
-                <Button id={id}
+                <Button
+                    id={id}
                     isLoading={isLoading}
                     onClick={onClick}>
                     <img

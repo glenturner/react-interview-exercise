@@ -2,13 +2,14 @@ import React from 'react';
 import GoogleMapReact from 'google-map-react';
 import { googleMapsKey } from '@utils/maps';
 import { GooglePoint } from './GooglePoint';
+import { NCESSchoolFeatureAttributes } from '@utils/nces';
 import { Flex } from '..';
 import style from './style.module.scss';
 
 interface GoogleMapProps {
     center?: { lat: number, lng: number };
     zoom?: number;
-    locations?: any;
+    locations?: Partial<NCESSchoolFeatureAttributes>[];
 }
 
 export const GoogleMap = (props: GoogleMapProps) => {
@@ -22,7 +23,7 @@ export const GoogleMap = (props: GoogleMapProps) => {
                 yesIWantToUseGoogleMapApiInternals
             >
                 {
-                    props.locations.map((location: any, index: any) => {
+                    props?.locations?.map((location: any, index: any) => {
                         return <GooglePoint
                             key={index}
                             lat={location.LAT}

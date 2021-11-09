@@ -23,10 +23,7 @@ export const SearchField = (props: InputFieldProps) => {
     };
 
     return (
-        <Flex
-            center
-            className={style.input_wrapper}
-        >
+        <Flex center className={style.input_wrapper}>
             <img
                 draggable="false"
                 style={{ height: 20, width: 'auto', padding: '0 15px' }}

@@ -7,6 +7,11 @@
     overflow: hidden;
     margin-top: 50px;
     user-select: none;
+
+    h1 {
+        text-align: left;
+        width: 80%;
+    }
 }
 
 .copy_section {
@@ -17,46 +22,80 @@
     background-color: $p;
     height: 0.25rem;
     border-radius: 5px;
-    width: 12rem;
+    width: 14rem;
     display: block;
     margin-top: 0.75rem;
-    margin-right: 12rem;
+    margin-right: 25rem;
     display: flex;
-    align-self: center;
+    align-self: center !important;
 }
 
 .grabber {
     font-size: 18px;
     font-weight: 500;
-    text-align: center;
+    text-align: left;
     line-height: 1.5;
-    width: 70%;
-    margin-top: 30px;
+    width: 80%;
+    margin-top: 0.75rem;
+    letter-spacing: 0.03051em;
 }
 
-@media only screen and (max-width: 1199px) {
+@media only screen and (max-width: 1565px) {
+    .accent {
+        margin-right: 15rem;
+    }
+}
+
+@media only screen and (max-width: 1420px) {
+    .copy_section {
+        h1 {
+            font-size: 50px !important;
+        }
+    }
+}
+
+@media only screen and (max-width: 1200px) {
     .copy_section {
         h1 {
             font-size: 45px !important;
+            width: 80%;
         }
         .grabber {
             font-size: 14px;
             width: 80%;
         }
+        .accent {
+            width: 12rem;
+            margin-right: 12rem;
+        }
     }
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1035px) {
     .copy_section {
         h1 {
             font-size: 38px !important;
         }
-        .grabber {
-            font-size: 14px;
-        }
         .accent {
             width: 10rem;
-            margin-right: 9rem;
+            margin-right: 12rem;
+        }
+    }
+}
+
+@media only screen and (max-width: 870px) {
+    .copy_section {
+        padding-left: 10px;
+        h1 {
+            font-size: 32px !important;
+            width: 90%;
+        }
+        .grabber {
+            font-size: 14px;
+            width: 90%;
+        }
+        .accent {
+            margin-right: 10rem;
         }
     }
 }
@@ -65,6 +104,19 @@
     .landing_wrapper {
         flex-direction: column !important;
         height: 90vh;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    h1 {
+        text-align: center;
+        width: 100%;
+        text-align: center !important;
+    }
+    .grabber {
+        text-align: center;
+    }
+    .accent {
+        margin-right: 0 !important;
     }
 }
 

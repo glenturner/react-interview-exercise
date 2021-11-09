@@ -17,17 +17,16 @@ const Home: React.FC = () => {
     const handleSearch = useCallback(async () => {
         setSearching(true)
 
-        const demoDistrictSearch = districtInput ? await searchSchoolDistricts(districtInput) : []
-        setDistrictSearch(demoDistrictSearch)
-
-        const demoSchoolSearch = schoolInput ? await searchSchools(schoolInput, demoDistrictSearch.length ? demoDistrictSearch[1].LEAID : undefined) : []
-        setSchoolSearch(demoSchoolSearch)
+        const searchResponse = schoolInput ? await searchSchools(schoolInput) : []
+        setSchoolSearch(searchResponse)
 
         setSearching(false)
     }, [schoolSearch, districtSearch, schoolInput, districtInput])
 
-    const onUpdateSchool = (value: any) => setSchoolInput(value);
-    const onUpdateDistrict = (value: any) => setDistrictInput(value);
+    const onUpdateSchool = useCallback((value: any) => setSchoolInput(value), []);
+
+    // Decided to omit district search in order to improve UX -- added by Glen Turner.
+    // const onUpdateDistrict = (value: any) => setDistrictInput(value);
 
     useEffect(() => {
         const listener = (event: any) => {
@@ -41,9 +40,7 @@ const Home: React.FC = () => {
             }
         };
         document.addEventListener("keydown", listener);
-        return () => {
-            document.removeEventListener("keydown", listener);
-        };
+        return () => { document.removeEventListener("keydown", listener) };
     }, [schoolSearch, districtSearch, schoolInput, districtInput]);
 
     return (
