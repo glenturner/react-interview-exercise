@@ -3,7 +3,7 @@ import { Flex } from "../Flex";
 import style from "./style.module.scss";
 import { AppLogo } from "..";
 
-
+// I put this together because the provided Header was breaking on Firefox -- added by Glen Turner.
 export const Navbar = () => {
 
     return (
