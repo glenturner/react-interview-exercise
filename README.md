@@ -5,7 +5,7 @@ This coding exercise demonstrates creative problem solving and modern web develo
 - Make any changes to this repository as you see fit
 - Use comments to critique and guide code review
 
-### [Demo](https://glenturner.github.io/react-interview-exercise/)
+### [Link to Demo](https://glenturner.github.io/react-interview-exercise/)
 
 ## Overview of this repository
 
